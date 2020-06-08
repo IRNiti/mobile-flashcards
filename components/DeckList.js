@@ -7,8 +7,10 @@ class DeckList extends Component {
         return(
             <View>
                 <Text>DeckList</Text>
-                <DeckCard/>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckView')}>
+                    <DeckCard/>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('NewDeck')}>
                     <Text>New Deck</Text>
                 </TouchableOpacity>
             </View>
