@@ -3,8 +3,8 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 
 class NewQuestionForm extends Component {
     saveQuestion = () => {
-        //save deck to AsyncStorage
-        //update store
+        //TODO: save deck to AsyncStorage
+        //TODO: update store
         this.props.navigation.navigate('DeckView')
     }
 

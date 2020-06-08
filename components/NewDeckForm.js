@@ -3,9 +3,10 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 
 class NewDeckForm extends Component {
     saveDeck = () => {
-        //save deck to AsyncStorage
-        //update store
-        this.props.navigation.navigate('Decks')
+        //TODO: save deck to AsyncStorage
+        //TODO: update store
+        //TODO: update navigation to route to newly created deck view
+        this.props.navigation.navigate('DeckView')
     }
 
     render() {
