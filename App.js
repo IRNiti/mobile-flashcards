@@ -1,6 +1,10 @@
 import React, {Component} from 'react'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers'
+import middleware from './middleware'
 import DeckList from './components/DeckList'
 import DeckView from './components/DeckView'
 import NewDeckForm from './components/NewDeckForm'
@@ -27,7 +31,9 @@ const AppContainer = createAppContainer(RootStack)
 export default class App extends Component {
   render() {
     return (
-        <AppContainer/>
+        <Provider store={createStore(reducer, middleware)}>
+            <AppContainer/>
+        </Provider>
     )
   }
 }
