@@ -16,7 +16,11 @@ class DeckView extends Component {
             <View>
                 <Text>{deck.title}</Text>
                 <Text>{deck.questions.length} {deck.questions.length === 1 ? 'card' : 'cards'}</Text>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('NewCard')}>
+                <TouchableOpacity onPress={() => {
+                    this.props.navigation.navigate('NewCard', {
+                        deckTitle: deck.title
+                    })
+                }}>
                     <Text>Add Card</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
