@@ -1,26 +1,54 @@
 import React, { Component } from 'react'
 import {View, Text, TextInput, TouchableOpacity} from 'react-native'
+import { connect } from 'react-redux'
 
 class QuestionView extends Component {
-    render() {
+    state = {
+        answer : ''
+    }
+
+    handleChange = (event) => {
+        const input = event.target.value
+        this.setState(() => ({
+            answer: input
+        }))
+    }
+
+    handleSubmit = () => {
         const {navigation} = this.props
         const questionNum = navigation.getParam('questionIndex', 'noIndex')
         const totalQuestions = navigation.getParam('totalQuestions', '0')
         const correctQuestions = navigation.getParam('correctQuestions', '0')
 
+        navigation.navigate('QuizAnswer', {
+            deckTitle: this.props.deckTitle,
+            submittedAnswer: this.state.answer,
+            questionIndex: questionNum,
+            totalQuestions: totalQuestions,
+            correctQuestions: correctQuestions
+        })
+
+        this.setState(() => ({
+            answer: ''
+        }))
+    }
+
+    render() {
+        const {navigation} = this.props
+        const questionNum = navigation.getParam('questionIndex', 'noIndex')
+        const totalQuestions = navigation.getParam('totalQuestions', '0')
+
         return(
             <View>
                 <Text>{questionNum}/{totalQuestions}</Text>
-                <Text>Question</Text>
-                <TextInput placeholder="Your answer"/>
+                <Text>{this.props.question}</Text>
+                <TextInput
+                    placeholder="Your answer"
+                    value={this.state.answer}
+                    onChange={this.handleChange}
+                />
                 <TouchableOpacity
-                    onPress={() => {
-                        navigation.navigate('QuizAnswer', {
-                            questionIndex: questionNum,
-                            totalQuestions: totalQuestions,
-                            correctQuestions: correctQuestions
-                        })
-                    }}>
+                    onPress={() => this.handleSubmit()}>
                     <Text>Show Answer</Text>
                 </TouchableOpacity>
             </View>
@@ -28,4 +56,13 @@ class QuestionView extends Component {
     }
 }
 
-export default QuestionView
+function mapStateToProps(state, { navigation }){
+    const {deckTitle, questionIndex} = navigation.state.params
+
+    return {
+        deckTitle,
+        question: state[deckTitle].questions[questionIndex - 1].question
+    }
+}
+
+export default connect(mapStateToProps)(QuestionView)

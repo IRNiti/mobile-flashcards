@@ -3,7 +3,6 @@ import {View, Text, TouchableOpacity} from 'react-native'
 import { connect } from 'react-redux'
 
 class DeckView extends Component {
-    //update to make title show actual deck title instead of hardcoded value
     static navigationOptions = ({navigation}) => {
         return {
             headerTitle: navigation.state.params.title
@@ -26,6 +25,7 @@ class DeckView extends Component {
                 <TouchableOpacity
                     onPress={() => {
                         this.props.navigation.navigate('Quiz', {
+                            deckTitle: deck.title,
                             questionIndex: 1,
                             totalQuestions: deck.questions.length,
                             correctQuestions: 0
@@ -41,8 +41,6 @@ class DeckView extends Component {
 
 function mapStateToProps(state, {navigation}){
     const {title} = navigation.state.params
-
-    console.log(state)
 
     return {
         deck: state[title]

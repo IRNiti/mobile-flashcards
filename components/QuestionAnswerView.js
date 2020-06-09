@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {View, Text, TouchableOpacity} from 'react-native'
+import { connect } from 'react-redux'
 
 class QuestionAnswerView extends Component {
     static navigationOptions = ({navigation}) => {
@@ -41,9 +42,9 @@ class QuestionAnswerView extends Component {
         return(
             <View>
                 <Text>{questionNum}/{totalQuestions}</Text>
-                <Text>Question</Text>
-                <Text>Submitted Answer</Text>
-                <Text>Correct Answer</Text>
+                <Text>{this.props.question}</Text>
+                <Text>{this.props.submittedAnswer}</Text>
+                <Text>{this.props.correctAnswer}</Text>
                 <TouchableOpacity onPress={() => this.recordAnswer(true)}>
                     <Text>Correct</Text>
                 </TouchableOpacity>
@@ -55,4 +56,14 @@ class QuestionAnswerView extends Component {
     }
 }
 
-export default QuestionAnswerView
+function mapStateToProps(state, { navigation }){
+    const {deckTitle, submittedAnswer, questionIndex} = navigation.state.params
+    return {
+        deckTitle,
+        question: state[deckTitle].questions[questionIndex - 1].question,
+        correctAnswer: state[deckTitle].questions[questionIndex - 1].answer,
+        submittedAnswer
+    }
+}
+
+export default connect(mapStateToProps)(QuestionAnswerView)

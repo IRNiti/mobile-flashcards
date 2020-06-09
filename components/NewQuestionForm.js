@@ -20,8 +20,8 @@ class NewQuestionForm extends Component {
         const {navigation} = this.props
         //TODO: save deck to AsyncStorage
         this.props.dispatch(addQuestion(navigation.state.params.deckTitle, {
-            question: '',
-            answer: ''
+            question: this.state.question,
+            answer: this.state.answer
         }))
 
         navigation.navigate('DeckView', {
