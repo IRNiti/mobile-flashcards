@@ -12,6 +12,7 @@ import NewQuestionForm from './components/NewQuestionForm'
 import QuestionView from './components/QuestionView'
 import QuestionAnswerView from './components/QuestionAnswerView'
 import QuizSummaryView from './components/QuizSummaryView'
+import ErrorView from './components/ErrorView'
 
 const RootStack = createStackNavigator({
     Decks: DeckList,
@@ -20,7 +21,8 @@ const RootStack = createStackNavigator({
     NewCard: NewQuestionForm,
     Quiz: QuestionView,
     QuizAnswer: QuestionAnswerView,
-    QuizSummary: QuizSummaryView
+    QuizSummary: QuizSummaryView,
+    Error: ErrorView
     },
     {
         initialRouteName: 'Decks'

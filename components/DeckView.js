@@ -9,6 +9,20 @@ class DeckView extends Component {
         }
     }
 
+    goToQuiz = () => {
+        const {deck} = this.props
+        if(deck.questions.length === 0){
+            this.props.navigation.navigate('Error')
+        } else {
+            this.props.navigation.navigate('Quiz', {
+                deckTitle: deck.title,
+                questionIndex: 1,
+                totalQuestions: deck.questions.length,
+                correctQuestions: 0
+            })
+        }
+    }
+
     render() {
         const {deck} = this.props
         return(
@@ -22,16 +36,7 @@ class DeckView extends Component {
                 }}>
                     <Text>Add Card</Text>
                 </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={() => {
-                        this.props.navigation.navigate('Quiz', {
-                            deckTitle: deck.title,
-                            questionIndex: 1,
-                            totalQuestions: deck.questions.length,
-                            correctQuestions: 0
-                        })
-                    }}
-                >
+                <TouchableOpacity onPress={this.goToQuiz}>
                     <Text>Start Quiz</Text>
                 </TouchableOpacity>
             </View>
