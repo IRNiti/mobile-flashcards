@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 import { connect } from 'react-redux'
-import { addQuestion } from '../actions'
+import { handleAddCard } from '../actions'
 
 class NewQuestionForm extends Component {
     state = {
@@ -18,15 +18,12 @@ class NewQuestionForm extends Component {
 
     saveQuestion = () => {
         const {navigation} = this.props
-        //TODO: save deck to AsyncStorage
-        this.props.dispatch(addQuestion(navigation.state.params.deckTitle, {
+        this.props.dispatch(handleAddCard(navigation.state.params.deckTitle, {
             question: this.state.question,
             answer: this.state.answer
-        }))
-
-        navigation.navigate('DeckView', {
+        }, () => navigation.navigate('DeckView', {
             title: navigation.state.params.deckTitle
-        })
+        })))
     }
 
     render() {

@@ -1,4 +1,4 @@
-import { getDecks, saveDeckTitle } from '../utils/api'
+import { getDecks, saveDeckTitle, addCardToDeck } from '../utils/api'
 
 export const RECEIVE_DECKS = 'RECEIVE_DECKS'
 export const ADD_DECK = 'ADD_DECK'
@@ -26,8 +26,6 @@ export function addQuestion(deckTitle, question){
     }
 }
 
-//TODO: implement action creators once AsyncStorage is implemented
-//TODO: implement error handling for storage errors
 export function handleInitialData() {
     return (dispatch) => {
         return getDecks().then((results) => {
@@ -43,14 +41,24 @@ export function handleInitialData() {
 export function handleAddDeck(deck, cb) {
     return (dispatch) => {
         return saveDeckTitle(deck).then((result) => {
-            console.log(result)
-            //addDeck takes in a deck as input, does AsyncStorage return stored value?
-            //if not, have to modify saveDeckTitle to return value
             dispatch(addDeck(deck))
             cb()
         }).catch((err) => {
-            console.warn('Error submitting deck: ', err)
-            alert('Error submitting deck')
+            console.warn('Error saving deck: ', err)
+            alert('Error saving deck')
+        })
+    }
+}
+
+export function handleAddCard(title, card, cb) {
+    return (dispatch) => {
+        return addCardToDeck(title, card).then((result) => {
+            console.log(result)
+            dispatch(addQuestion(title, card))
+            cb()
+        }).catch((err) => {
+            console.warn('Error saving question: ', err)
+            alert('Error saving question')
         })
     }
 }

@@ -16,7 +16,6 @@ class NewDeckForm extends Component {
     }
 
     saveDeck = () => {
-        //TODO: save deck to AsyncStorage
         this.props.dispatch(handleAddDeck({
             [this.state.title]: {
                 title: this.state.title,
