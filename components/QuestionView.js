@@ -8,7 +8,7 @@ class QuestionView extends Component {
     }
 
     handleChange = (event) => {
-        const input = event.target.value
+        const input = event.nativeEvent.text
         this.setState(() => ({
             answer: input
         }))

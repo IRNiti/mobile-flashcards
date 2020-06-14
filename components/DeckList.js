@@ -9,6 +9,7 @@ class DeckList extends Component {
         //this.props.dispatch(handleInitialData())
     }
 
+    //TODO: pass in deck title to navigate to DeckView
     render() {
         const { decks } = this.props
         return(

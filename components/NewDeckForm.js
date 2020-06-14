@@ -9,7 +9,7 @@ class NewDeckForm extends Component {
     }
 
     handleChange = (event) => {
-        const input = event.target.value
+        const input = event.nativeEvent.text
         this.setState(() => ({
             title: input
         }))

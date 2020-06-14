@@ -10,7 +10,7 @@ class NewQuestionForm extends Component {
     }
 
     handleChange = (event, inputType) => {
-        const input = event.target.value
+        const input = event.nativeEvent.text
         this.setState(() => ({
             [inputType]: input
         }))
@@ -35,13 +35,13 @@ class NewQuestionForm extends Component {
                 <Text>Question</Text>
                 <TextInput
                     placeholder="Enter question here"
-                    onChange={() => this.handleChange(event,'question')}
+                    onChange={(event) => this.handleChange(event,'question')}
                     value={this.state.question}
                 />
                 <Text>Answer</Text>
                 <TextInput
                     placeholder="Enter answer here"
-                    onChange={() => this.handleChange(event,'answer')}
+                    onChange={(event) => this.handleChange(event,'answer')}
                     value={this.state.answer}
                 />
                 <TouchableOpacity onPress={this.saveQuestion}>
