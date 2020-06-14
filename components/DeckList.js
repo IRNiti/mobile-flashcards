@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
+import { handleInitialData } from '../actions'
 import DeckCard from './DeckCard'
 
 class DeckList extends Component {
     componentDidMount() {
-        //TODO: retrieve decks from AsyncStorage
-        //this.props.dispatch(handleInitialData())
+        this.props.dispatch(handleInitialData())
     }
 
-    //TODO: pass in deck title to navigate to DeckView
     render() {
         const { decks } = this.props
         return(
             <View>
-                <Text>DeckList</Text>
-
                 {decks && Object.keys(decks).map((key) => (
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckView')}>
+                    <TouchableOpacity key={key}
+                                      onPress={() => this.props.navigation.navigate('DeckView', {
+                                          title: decks[key].title
+                                      })}>
                         <DeckCard title={decks[key].title} numCards={decks[key].questions.length}/>
                     </TouchableOpacity>
                 ))}
@@ -30,9 +30,9 @@ class DeckList extends Component {
     }
 }
 
-function mapStateToProps({ decks }){
+function mapStateToProps(state){
     return {
-        decks
+        decks: state
     }
 }
 

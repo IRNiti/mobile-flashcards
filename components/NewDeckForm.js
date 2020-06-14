@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {View, Text, TextInput, TouchableOpacity} from 'react-native'
-import { addDeck } from '../actions'
+import { handleAddDeck } from '../actions'
 import { connect } from 'react-redux'
 
 class NewDeckForm extends Component {
@@ -17,16 +17,17 @@ class NewDeckForm extends Component {
 
     saveDeck = () => {
         //TODO: save deck to AsyncStorage
-        this.props.dispatch(addDeck({
+        this.props.dispatch(handleAddDeck({
             [this.state.title]: {
                 title: this.state.title,
                 questions: []
             }
-        }))
+        }, () => this.props.navigation.navigate('DeckView', {
+                title: this.state.title
+            }))
+        )
 
-        this.props.navigation.navigate('DeckView', {
-            title: this.state.title
-        })
+
     }
 
     render() {
