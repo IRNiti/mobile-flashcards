@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage'
 
-const CARDS_STORAGE_KEY = 'UdacityMobileFlashcards'
+const CARDS_STORAGE_KEY = 'UdacityMobileFlashcards:decks'
 
 export const getDecks = async () => {
     return AsyncStorage.getItem(CARDS_STORAGE_KEY)

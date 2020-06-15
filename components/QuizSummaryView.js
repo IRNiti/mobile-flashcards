@@ -1,11 +1,32 @@
 import React, { Component } from 'react'
 import {View, Text, TouchableOpacity} from 'react-native'
+import {clearLocalNotifications, setLocalNotification} from '../utils/helpers'
 
 class QuestionSummaryView extends Component {
     static navigationOptions = ({navigation}) => {
         return {
             headerTitle: 'Quiz'
         }
+    }
+
+    restartQuiz = () => {
+        const {navigation} = this.props
+        const totalQuestions = navigation.getParam('totalQuestions', '0')
+
+        clearLocalNotifications().then(setLocalNotification)
+
+        this.props.navigation.navigate('Quiz', {
+            questionIndex: 1,
+            totalQuestions: totalQuestions,
+            correctQuestions: 0
+        })
+    }
+
+    navigateToDeck = () => {
+        clearLocalNotifications().then(setLocalNotification)
+        
+        //TODO: this should navigate to a specific deck
+        this.props.navigation.navigate('DeckView')
     }
 
     render() {
@@ -17,17 +38,11 @@ class QuestionSummaryView extends Component {
             <View>
                 <Text>{correctQuestions/totalQuestions*100}%</Text>
                 <Text>Correct Answers</Text>
-                <TouchableOpacity onPress={() => {
-                    this.props.navigation.navigate('Quiz', {
-                        questionIndex: 1,
-                        totalQuestions: totalQuestions,
-                        correctQuestions: 0
-                    })
-                }}
+                <TouchableOpacity onPress={this.restartQuiz}
                 >
                     <Text>Restart Quiz</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckView')}>
+                <TouchableOpacity onPress={this.navigateToDeck}>
                     <Text>Back to Deck</Text>
                 </TouchableOpacity>
             </View>

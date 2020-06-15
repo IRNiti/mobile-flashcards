@@ -13,6 +13,7 @@ import QuestionView from './components/QuestionView'
 import QuestionAnswerView from './components/QuestionAnswerView'
 import QuizSummaryView from './components/QuizSummaryView'
 import ErrorView from './components/ErrorView'
+import {setLocalNotification } from './utils/helpers'
 
 const RootStack = createStackNavigator({
     Decks: DeckList,
@@ -31,6 +32,11 @@ const RootStack = createStackNavigator({
 const AppContainer = createAppContainer(RootStack)
 
 export default class App extends Component {
+    componentDidMount() {
+        setLocalNotification().then(() => {
+            console.log('finished setting local notifications')
+        })
+    }
   render() {
     return (
         <Provider store={createStore(reducer, middleware)}>
