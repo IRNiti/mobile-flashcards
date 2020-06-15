@@ -24,7 +24,7 @@ class QuestionSummaryView extends Component {
 
     navigateToDeck = () => {
         clearLocalNotifications().then(setLocalNotification)
-        
+
         //TODO: this should navigate to a specific deck
         this.props.navigation.navigate('DeckView')
     }
