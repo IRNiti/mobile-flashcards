@@ -45,7 +45,7 @@ class NewDeckForm extends Component {
                     style={[defaultStyles.genericBtn, defaultStyles.submitBtn]}
                 >
                     <Text style={defaultStyles.submitBtnText}>
-                        Save
+                        Create Deck
                     </Text>
                 </TouchableOpacity>
             </View>

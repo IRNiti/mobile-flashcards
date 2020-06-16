@@ -2,7 +2,7 @@
 
 ## Description
 
-This mobile application allows users to study using collections of flashcards. Users have the ability to create new collections (or decks) as well as to add cards to each deck. What's more, users can quiz themselves using the cards in each deck. Finally, if users have not completed at least a quiz during a given day, the app will display a local notification to remind them to complete a quiz.
+This mobile application allows users to study using collections of flashcards. Users have the ability to create new collections (or decks) as well as to add cards to each deck. What's more, users can quiz themselves using the cards in each deck. Finally, if users have not completed at least a quiz during a given day, the app will display a local notification at 8 PM to remind them to complete a quiz.
 
 The app is implemented using React Native and Redux for state management. Functionalities have been tested for web and Android. In order to run the Mobile Flashcards app, simply clone the repo, install dependencies using `npm install` and then run it using `npm run web`. To run it on your mobile device, install the Expo app from the Play Store and use it to scan the QR code that is displayed in your web browser after starting the app.
 
