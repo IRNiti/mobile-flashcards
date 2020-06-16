@@ -30,7 +30,7 @@ class NewQuestionForm extends Component {
     render() {
         return(
             <View style={defaultStyles.card}>
-                <Text style={defaultStyles.formInputTxt}>
+                <Text style={[defaultStyles.formInputTxt, defaultStyles.formInputMargins]}>
                     Question
                 </Text>
                 <TextInput
@@ -39,7 +39,7 @@ class NewQuestionForm extends Component {
                     value={this.state.question}
                     style={defaultStyles.formInputBox}
                 />
-                <Text style={defaultStyles.formInputTxt}>
+                <Text style={[defaultStyles.formInputTxt, defaultStyles.formInputMargins]}>
                     Answer
                 </Text>
                 <TextInput
@@ -50,7 +50,7 @@ class NewQuestionForm extends Component {
                 />
                 <TouchableOpacity
                     onPress={this.saveQuestion}
-                    style={defaultStyles.submitBtn}
+                    style={[defaultStyles.genericBtn, defaultStyles.submitBtn]}
                 >
                     <Text style={defaultStyles.submitBtnText}>
                         Submit

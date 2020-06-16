@@ -31,7 +31,7 @@ class NewDeckForm extends Component {
     render() {
         return(
             <View style={defaultStyles.card}>
-                <Text style={defaultStyles.formInputTxt}>
+                <Text style={[defaultStyles.formInputTxt, defaultStyles.formInputMargins]}>
                     Deck Title
                 </Text>
                 <TextInput
@@ -42,7 +42,7 @@ class NewDeckForm extends Component {
                 />
                 <TouchableOpacity
                     onPress={this.saveDeck}
-                    style={defaultStyles.submitBtn}
+                    style={[defaultStyles.genericBtn, defaultStyles.submitBtn]}
                 >
                     <Text style={defaultStyles.submitBtnText}>
                         Save

@@ -43,7 +43,7 @@ class DeckList extends Component {
 
                 <TouchableOpacity
                     onPress={() => this.props.navigation.navigate('NewDeck')}
-                    style={[defaultStyles.submitBtn, styles.btnAlignment]}
+                    style={[defaultStyles.genericBtn, defaultStyles.submitBtn, styles.btnAlignment]}
                 >
                     <Text style={defaultStyles.submitBtnText}>New Deck</Text>
                 </TouchableOpacity>

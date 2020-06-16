@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {View, Text, TouchableOpacity} from 'react-native'
 import { connect } from 'react-redux'
+import { defaultStyles } from './ContainerStyling'
 
 class QuestionAnswerView extends Component {
     static navigationOptions = ({navigation}) => {
@@ -10,6 +11,7 @@ class QuestionAnswerView extends Component {
     }
 
     recordAnswer = (answer) => {
+
         const {navigation} = this.props
         const questionNum = navigation.getParam('questionIndex', '0')
         const totalQuestions = navigation.getParam('totalQuestions', '0')
@@ -41,16 +43,51 @@ class QuestionAnswerView extends Component {
 
         return(
             <View>
-                <Text>{questionNum}/{totalQuestions}</Text>
-                <Text>{this.props.question}</Text>
-                <Text>{this.props.submittedAnswer}</Text>
-                <Text>{this.props.correctAnswer}</Text>
-                <TouchableOpacity onPress={() => this.recordAnswer(true)}>
-                    <Text>Correct</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.recordAnswer(false)}>
-                    <Text>Incorrect</Text>
-                </TouchableOpacity>
+                <View style={defaultStyles.card}>
+                    <Text>
+                        {questionNum}/{totalQuestions}
+                    </Text>
+                    <Text style={defaultStyles.formHeaderTxt}>
+                        Question
+                    </Text>
+                    <Text style={defaultStyles.formInputTxt}>
+                        {this.props.question}
+                    </Text>
+                    <Text style={defaultStyles.formHeaderTxt}>
+                        Your Answer
+                    </Text>
+                    <Text style={defaultStyles.formInputTxt}>
+                        {this.props.submittedAnswer}
+                    </Text>
+                    <Text style={defaultStyles.formHeaderTxt}>
+                        Correct Answer
+                    </Text>
+                    <Text style={defaultStyles.formInputTxt}>
+                        {this.props.correctAnswer}
+                    </Text>
+                </View>
+                <View style={defaultStyles.sideBySideBtnContainer}>
+                    <TouchableOpacity
+                        onPress={() => this.recordAnswer(true)}
+                        style={[defaultStyles.genericBtn,
+                            defaultStyles.correctBtn,
+                            defaultStyles.btnAlignment]}
+                    >
+                        <Text style={defaultStyles.submitBtnText}>
+                            Correct
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => this.recordAnswer(false)}
+                        style={[defaultStyles.genericBtn,
+                            defaultStyles.incorrectBtn,
+                            defaultStyles.btnAlignment]}
+                    >
+                        <Text style={defaultStyles.submitBtnText}>
+                            Incorrect
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         )
     }

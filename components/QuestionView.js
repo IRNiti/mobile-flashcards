@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 import { connect } from 'react-redux'
+import { defaultStyles } from './ContainerStyling'
 
 class QuestionView extends Component {
     state = {
@@ -39,17 +40,26 @@ class QuestionView extends Component {
         const totalQuestions = navigation.getParam('totalQuestions', '0')
 
         return(
-            <View>
-                <Text>{questionNum}/{totalQuestions}</Text>
-                <Text>{this.props.question}</Text>
+            <View style={defaultStyles.card}>
+                <Text>
+                    {questionNum}/{totalQuestions}
+                </Text>
+                <Text style={defaultStyles.formInputTxt}>
+                    {this.props.question}
+                </Text>
                 <TextInput
                     placeholder="Your answer"
                     value={this.state.answer}
                     onChange={this.handleChange}
+                    style={defaultStyles.formInputBox}
                 />
                 <TouchableOpacity
-                    onPress={() => this.handleSubmit()}>
-                    <Text>Show Answer</Text>
+                    onPress={() => this.handleSubmit()}
+                    style={[defaultStyles.genericBtn, defaultStyles.submitBtn]}
+                >
+                    <Text style={defaultStyles.submitBtnText}>
+                        Show Answer
+                    </Text>
                 </TouchableOpacity>
             </View>
         )

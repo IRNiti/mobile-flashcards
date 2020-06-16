@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import {View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { defaultStyles } from './ContainerStyling'
 
@@ -36,39 +36,36 @@ class DeckView extends Component {
                         {deck.questions.length} {deck.questions.length === 1 ? 'card' : 'cards'}
                     </Text>
                 </View>
-                <View style={styles.btnContainer}>
+                <View style={defaultStyles.sideBySideBtnContainer}>
                     <TouchableOpacity
                         onPress={() => {
                             this.props.navigation.navigate('NewCard', {
                                 deckTitle: deck.title
                             })
                         }}
-                        style={[defaultStyles.submitBtn, styles.btnAlignment]}
+                        style={[defaultStyles.genericBtn,
+                            defaultStyles.submitBtn,
+                            defaultStyles.btnAlignment]}
                     >
-                        <Text style={defaultStyles.submitBtnText}>Add Card</Text>
+                        <Text style={defaultStyles.submitBtnText}>
+                            Add Card
+                        </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={this.goToQuiz}
-                        style={[defaultStyles.submitBtn, styles.btnAlignment]}
+                        style={[defaultStyles.genericBtn,
+                            defaultStyles.submitBtn,
+                            defaultStyles.btnAlignment]}
                     >
-                        <Text style={defaultStyles.submitBtnText}>Start Quiz</Text>
+                        <Text style={defaultStyles.submitBtnText}>
+                            Start Quiz
+                        </Text>
                     </TouchableOpacity>
                 </View>
             </View>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    btnContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-around'
-    },
-    btnAlignment: {
-        justifyContent: 'center',
-    },
-})
 
 function mapStateToProps(state, {navigation}){
     const {title} = navigation.state.params
