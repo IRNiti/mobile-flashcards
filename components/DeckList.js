@@ -20,7 +20,6 @@ class DeckList extends Component {
         Animated.timing(opacity, {toValue: 0.01, duration: duration, useNativeDriver: true}).start()
 
         setTimeout(() => {
-
             this.props.navigation.navigate('DeckView', {
                 title: this.props.decks[key].title
             })

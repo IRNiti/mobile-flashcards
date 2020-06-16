@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import {View, Text, TouchableOpacity } from 'react-native'
+import { HeaderBackButton } from 'react-navigation-stack'
 import { connect } from 'react-redux'
 import { defaultStyles } from './ContainerStyling'
 
 class DeckView extends Component {
     static navigationOptions = ({navigation}) => {
         return {
-            headerTitle: navigation.state.params.title
+            headerTitle: navigation.state.params.title,
+            headerLeft:(<HeaderBackButton onPress={()=>{navigation.navigate('Decks')}}/>)
         }
     }
 
