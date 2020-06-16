@@ -35,8 +35,16 @@ export const defaultStyles = StyleSheet.create({
     },
     headerTxt: {
         fontSize: 22,
+        marginBottom: 10
     },
     descriptionTxt: {
         fontSize: 15,
+    },
+    center: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 30,
+        marginRight: 30,
     }
 })
