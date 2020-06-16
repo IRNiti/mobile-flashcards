@@ -34,6 +34,7 @@ export const defaultStyles = StyleSheet.create({
         marginLeft: Platform.OS === 'ios' ? 40: 30,
         marginRight: Platform.OS === 'ios' ? 40: 30,
         marginTop: 30,
+        marginBottom: 30
     },
     submitBtn: {
         backgroundColor: defaultBtnColor,
@@ -51,7 +52,8 @@ export const defaultStyles = StyleSheet.create({
     },
     headerTxt: {
         fontSize: 22,
-        marginBottom: 10
+        marginBottom: 10,
+        marginTop: 10
     },
     descriptionTxt: {
         fontSize: 15,
