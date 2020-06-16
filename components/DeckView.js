@@ -29,8 +29,12 @@ class DeckView extends Component {
         return(
             <View>
                 <View style={defaultStyles.card}>
-                    <Text style={defaultStyles.headerTxt}>{deck.title}</Text>
-                    <Text style={defaultStyles.descriptionTxt}>{deck.questions.length} {deck.questions.length === 1 ? 'card' : 'cards'}</Text>
+                    <Text style={defaultStyles.headerTxt}>
+                        {deck.title}
+                    </Text>
+                    <Text style={defaultStyles.descriptionTxt}>
+                        {deck.questions.length} {deck.questions.length === 1 ? 'card' : 'cards'}
+                    </Text>
                 </View>
                 <View style={styles.btnContainer}>
                     <TouchableOpacity

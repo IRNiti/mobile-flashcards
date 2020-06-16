@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 import { handleAddDeck } from '../actions'
 import { connect } from 'react-redux'
+import { defaultStyles } from './ContainerStyling'
 
 class NewDeckForm extends Component {
     state = {
@@ -25,21 +26,27 @@ class NewDeckForm extends Component {
                 title: this.state.title
             }))
         )
-
-
     }
 
     render() {
         return(
-            <View>
-                <Text>Title</Text>
+            <View style={defaultStyles.card}>
+                <Text style={defaultStyles.formInputTxt}>
+                    Deck Title
+                </Text>
                 <TextInput
                     placeholder="Enter deck title here"
                     value={this.state.title}
                     onChange={this.handleChange}
+                    style={defaultStyles.formInputBox}
                 />
-                <TouchableOpacity onPress={this.saveDeck}>
-                    <Text>Save</Text>
+                <TouchableOpacity
+                    onPress={this.saveDeck}
+                    style={defaultStyles.submitBtn}
+                >
+                    <Text style={defaultStyles.submitBtnText}>
+                        Save
+                    </Text>
                 </TouchableOpacity>
             </View>
         )

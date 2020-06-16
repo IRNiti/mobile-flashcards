@@ -1,5 +1,5 @@
 import {Platform, StyleSheet} from 'react-native'
-import {buttonColor, buttonText, cardBackgroundColor} from '../utils/colors'
+import {buttonColor, buttonText, cardBackgroundColor, gray} from '../utils/colors'
 
 export const defaultStyles = StyleSheet.create({
     card: {
@@ -31,7 +31,7 @@ export const defaultStyles = StyleSheet.create({
     submitBtnText: {
         color: buttonText,
         fontSize: 18,
-        textAlign: 'center'
+        textAlign: 'center',
     },
     headerTxt: {
         fontSize: 22,
@@ -39,6 +39,16 @@ export const defaultStyles = StyleSheet.create({
     },
     descriptionTxt: {
         fontSize: 15,
+    },
+    formInputTxt: {
+        fontSize: 18,
+        marginBottom: 10,
+        marginTop: 25
+    },
+    formInputBox: {
+        fontSize: 16,
+        borderBottomColor: gray,
+        borderBottomWidth: 1,
     },
     center: {
         flex: 1,

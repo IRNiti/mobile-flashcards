@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 import { connect } from 'react-redux'
 import { handleAddCard } from '../actions'
+import { defaultStyles } from './ContainerStyling'
 
 class NewQuestionForm extends Component {
     state = {
@@ -28,21 +29,32 @@ class NewQuestionForm extends Component {
 
     render() {
         return(
-            <View>
-                <Text>Question</Text>
+            <View style={defaultStyles.card}>
+                <Text style={defaultStyles.formInputTxt}>
+                    Question
+                </Text>
                 <TextInput
                     placeholder="Enter question here"
                     onChange={(event) => this.handleChange(event,'question')}
                     value={this.state.question}
+                    style={defaultStyles.formInputBox}
                 />
-                <Text>Answer</Text>
+                <Text style={defaultStyles.formInputTxt}>
+                    Answer
+                </Text>
                 <TextInput
                     placeholder="Enter answer here"
                     onChange={(event) => this.handleChange(event,'answer')}
                     value={this.state.answer}
+                    style={defaultStyles.formInputBox}
                 />
-                <TouchableOpacity onPress={this.saveQuestion}>
-                    <Text>Submit</Text>
+                <TouchableOpacity
+                    onPress={this.saveQuestion}
+                    style={defaultStyles.submitBtn}
+                >
+                    <Text style={defaultStyles.submitBtnText}>
+                        Submit
+                    </Text>
                 </TouchableOpacity>
             </View>
         )
