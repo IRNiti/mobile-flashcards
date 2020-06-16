@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, Animated } from 'react-native'
+import { View, Text, TouchableOpacity, Animated, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions'
+import { defaultStyles } from './ContainerStyling'
 import DeckCard from './DeckCard'
 
 class DeckList extends Component {
@@ -34,19 +35,30 @@ class DeckList extends Component {
                     <TouchableOpacity key={key}
                                       onPress={() => this.displayDeck(key)}
                     >
-                        <View>
+                        <View style={defaultStyles.card}>
                             <DeckCard title={decks[key].title} numCards={decks[key].questions.length}/>
                         </View>
                     </TouchableOpacity>
                 ))}
 
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('NewDeck')}>
-                    <Text>New Deck</Text>
+                <TouchableOpacity
+                    onPress={() => this.props.navigation.navigate('NewDeck')}
+                    style={[defaultStyles.submitBtn, styles.btnAlignment]}
+                >
+                    <Text style={defaultStyles.submitBtnText}>New Deck</Text>
                 </TouchableOpacity>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    btnAlignment: {
+        alignSelf: 'flex-end',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+})
 
 function mapStateToProps(state){
     return {
